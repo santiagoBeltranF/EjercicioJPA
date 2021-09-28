@@ -10,10 +10,10 @@ import javax.persistence.Table
 @Table(name="Usuarios")
 data class Usuario(
     @Id
-    @Column(name="cedula")
-    var identification:String,
-    @Column(name="nombre")
-    val name:String,
-    @Column(name="apellido")
-    val lastname:String
+    @Column(name="user_identification")
+    val identification:String,
+    @Column(name="nombre_usuario")
+    var name:String,
+    @Column(name="apellido_usuario")
+    var lastname:String
 ):Serializable

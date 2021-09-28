@@ -7,11 +7,11 @@ import javax.persistence.Id
 import javax.persistence.Table
 
 @Entity
-@Table(name="Autor")
+@Table(name="autor")
 data class Autor(
     @Id
-    @Column(name="Codigo_Autor")
-    val codigoAutor:Long,
+    @Column(name="codigo_autor")
+    val id:Long,
     @Column(name="nombre")
     var name:String,
     @Column(name="apellido")

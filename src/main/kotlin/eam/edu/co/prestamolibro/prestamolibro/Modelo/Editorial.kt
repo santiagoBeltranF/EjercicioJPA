@@ -8,8 +8,8 @@ import javax.persistence.*
 data class Editorial(
     @Id
     @Column(name="codigo_editorial")
-    var code:Long,
+    val code:String,
     @Column(name="nombre_editorial")
-    val name:String
+    var name:String
 
 ):Serializable

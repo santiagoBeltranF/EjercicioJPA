@@ -8,14 +8,14 @@ import javax.persistence.*
 @Table(name="Prestamo")
 data class Prestamo(
     @Id
-    @Column(name="codigo_Prestamo")
-    var id:Long,
+    @Column(name="id")
+    val id:Long,
     @ManyToOne
     @JoinColumn(name="id_libro")
-    var libro:Libro,
+    val libro:Libro,
     @ManyToOne
     @JoinColumn(name="id_usuario")
-    var usuario:Usuario,
-    @Column(name="fecha_hora")
-    val dateTime:Date
+    val usuario:Usuario,
+    @Column(name="fecha_prestamo")
+    var dateTime:Date
 ):Serializable

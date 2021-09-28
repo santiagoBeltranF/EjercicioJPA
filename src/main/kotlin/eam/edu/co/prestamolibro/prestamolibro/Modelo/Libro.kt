@@ -8,12 +8,12 @@ import javax.persistence.*
 data class Libro(
     @Id
     @Column(name="codigo_autor")
-    var code:String,
+    val code:String,
     @Column(name="isbn_libro")
-    val isbn:String,
+    var isbn:String,
     @Column(name="nombre_libro")
-    val name:String,
+    var name:String,
     @ManyToOne
-    @JoinColumn(name ="codigo_editorial")
-    var  Codigo_Editorial:Editorial
+    @JoinColumn(name ="id_editorial")
+    val  editorial:Editorial
 ):Serializable

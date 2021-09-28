@@ -7,7 +7,7 @@ import javax.persistence.*
 data class AutorLibro(
     @Id
     @Column(name="codigo_autor_libro")
-    var code:Long,
+    val id:Long,
     @ManyToOne
     @JoinColumn(name =  "codigo_Autor" )
     val  autor: Autor,
