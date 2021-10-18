@@ -1,8 +1,6 @@
-package eam.edu.co.prestamolibro.prestamolibro
+package eam.edu.co.prestamolibro.prestamolibro.repositories
 
 import eam.edu.co.prestamolibro.prestamolibro.Modelo.*
-import eam.edu.co.prestamolibro.prestamolibro.repositorio.AutorRepo
-import eam.edu.co.prestamolibro.prestamolibro.repositorio.EditorialRepo
 import eam.edu.co.prestamolibro.prestamolibro.repositorio.PrestamoRepo
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test

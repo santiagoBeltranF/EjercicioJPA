@@ -1,9 +1,7 @@
-package eam.edu.co.prestamolibro.prestamolibro
+package eam.edu.co.prestamolibro.prestamolibro.repositories
 
 import eam.edu.co.prestamolibro.prestamolibro.Modelo.Editorial
-import eam.edu.co.prestamolibro.prestamolibro.Modelo.Usuario
 import eam.edu.co.prestamolibro.prestamolibro.repositorio.EditorialRepo
-import eam.edu.co.prestamolibro.prestamolibro.repositorio.UsuarioRepo
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired

@@ -1,4 +1,4 @@
-package eam.edu.co.prestamolibro.prestamolibro
+package eam.edu.co.prestamolibro.prestamolibro.repositories
 
 import eam.edu.co.prestamolibro.prestamolibro.Modelo.Autor
 import eam.edu.co.prestamolibro.prestamolibro.Modelo.AutorLibro
