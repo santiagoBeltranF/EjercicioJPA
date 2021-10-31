@@ -1,7 +1,7 @@
 package eam.edu.co.prestamolibro.prestamolibro.repositories
 
-import eam.edu.co.prestamolibro.prestamolibro.Modelo.Editorial
-import eam.edu.co.prestamolibro.prestamolibro.Modelo.Libro
+import eam.edu.co.prestamolibro.prestamolibro.Modelo.Publisher
+import eam.edu.co.prestamolibro.prestamolibro.Modelo.Book
 import eam.edu.co.prestamolibro.prestamolibro.repositorio.LibroRepo
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
@@ -32,11 +32,11 @@ class repositorioLibro {
         //prerequisitos
         //que la persona no exista
         //la ejecucion de la prueba.. llamar el metodo que estoy probando
-        val editorial= Editorial("1","nacho")
+        val editorial= Publisher("1","nacho")
         entityManager.persist(editorial)
-        libroRepo.createLibro(Libro("3","1","harryPotter", editorial))
+        libroRepo.createLibro(Book("3","1","harryPotter", editorial))
         //asersiones, o las verificaciones
-        val libro = entityManager.find(Libro::class.java,  "3")
+        val libro = entityManager.find(Book::class.java,  "3")
         Assertions.assertNotNull(libro)
         Assertions.assertEquals("3", libro.code)
         Assertions.assertEquals("1", libro.isbn)
@@ -48,23 +48,23 @@ class repositorioLibro {
     @Test
     fun testDeleteLibro(){
         //prerequisitos
-        val editorial= Editorial("1","nacho")
+        val editorial= Publisher("1","nacho")
         entityManager.persist(editorial)
-        libroRepo.createLibro(Libro("3","1","harryPotter", editorial))
+        libroRepo.createLibro(Book("3","1","harryPotter", editorial))
 
         //ejecucion de la preuba
         libroRepo.deleteLibro("3")
 
         //assersiones
-        val libro = entityManager.find(Libro::class.java, "3")
+        val libro = entityManager.find(Book::class.java, "3")
         Assertions.assertNull(libro)
     }
 
     @Test
     fun findTestLibro() {
-        val editorial= Editorial("1","nacho")
+        val editorial= Publisher("1","nacho")
         entityManager.persist(editorial)
-        libroRepo.createLibro(Libro("3","1","harryPotter", editorial))
+        libroRepo.createLibro(Book("3","1","harryPotter", editorial))
 
         val libro = libroRepo.findLirbo("3")
 
@@ -78,12 +78,12 @@ class repositorioLibro {
     @Test
     fun testUpdateLibro() {
         //prerequisito
-        val editorial= Editorial("1","nacho")
+        val editorial= Publisher("1","nacho")
         entityManager.persist(editorial)
-        libroRepo.createLibro(Libro("3","1","harryPotter", editorial))
+        libroRepo.createLibro(Book("3","1","harryPotter", editorial))
         entityManager.flush()
         //ejecutando...
-        val libro = entityManager.find(Libro::class.java, "3")
+        val libro = entityManager.find(Book::class.java, "3")
         entityManager.clear()
         libro.name = "tontin"
         libro.isbn ="2"
@@ -92,7 +92,7 @@ class repositorioLibro {
         libroRepo.updateLibro(libro)
 
         //assersiones
-        val personToAssert = entityManager.find(Libro::class.java, "3")
+        val personToAssert = entityManager.find(Book::class.java, "3")
         Assertions.assertEquals("tontin",libro.name)
         Assertions.assertEquals("2", libro.isbn)
         Assertions.assertEquals("nachito", editorial.name)
@@ -100,13 +100,13 @@ class repositorioLibro {
     }
     @Test
     fun finByPublisherTest(){
-        val editorial1=Editorial("1","df")
+        val editorial1=Publisher("1","df")
         entityManager.persist(editorial1)
-        val editorial2=Editorial("2","dg")
+        val editorial2=Publisher("2","dg")
         entityManager.persist(editorial2)
-        entityManager.persist(Libro("11","1a","las reliquias",editorial1))
-        entityManager.persist(Libro("12","2a","El prisionero",editorial1))
-        entityManager.persist(Libro("13","3a","la camara",editorial2))
+        entityManager.persist(Book("11","1a","las reliquias",editorial1))
+        entityManager.persist(Book("12","2a","El prisionero",editorial1))
+        entityManager.persist(Book("13","3a","la camara",editorial2))
 
         val listaOne=libroRepo.findByEditorial(1)
         val listaTwo=libroRepo.findByEditorial(2)

@@ -1,8 +1,6 @@
 package eam.edu.co.prestamolibro.prestamolibro.repositorio
 
-import eam.edu.co.prestamolibro.prestamolibro.Modelo.Autor
-import eam.edu.co.prestamolibro.prestamolibro.Modelo.AutorLibro
-import eam.edu.co.prestamolibro.prestamolibro.Modelo.Prestamo
+import eam.edu.co.prestamolibro.prestamolibro.Modelo.AuthorBook
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
@@ -15,25 +13,25 @@ class AutorLibroRepo {
     @Autowired //esta anotacion indica que springboot se encargara de instanciar esta clase.
     lateinit var em: EntityManager //clase que nos da JPA para manipular las entidades.
 
-    fun findByAutor(codigoAutor:Long):List<AutorLibro>{
+    fun findByAutor(codigoAutor:Long):List<AuthorBook>{
         val query=em.createQuery("SELECT auLi FROM AutorLibro auLi WHERE auLi.autor.id=:codeAut")
         query.setParameter("codeAut",codigoAutor)
-        return query.resultList as List<AutorLibro>
+        return query.resultList as List<AuthorBook>
     }
-    fun findBylibro(code:String):List<AutorLibro>{
+    fun findBylibro(code:String):List<AuthorBook>{
         val query=em.createQuery("SELECT auLi FROM AutorLibro auLi WHERE auLi.libro.code=:codeLibro")
         query.setParameter("codeLibro",code)
-        return query.resultList as List<AutorLibro>
+        return query.resultList as List<AuthorBook>
     }
-    fun createAutorLibro(autorLibro: AutorLibro){
+    fun createAutorLibro(autorLibro: AuthorBook){
         em.persist(autorLibro) //inserta en la tabla que define la entidad.
     }
     //? quiere decir q algo puede ser null
-    fun findAutorLibro(codigoAutorLibro:Long): AutorLibro?{
+    fun findAutorLibro(codigoAutorLibro:Long): AuthorBook?{
         //se el envia la clase que quiero buscar y el valor de la llave primaria que quiero buscar.
-        return em.find(AutorLibro::class.java,codigoAutorLibro) //busca en la bd por llave primaria
+        return em.find(AuthorBook::class.java,codigoAutorLibro) //busca en la bd por llave primaria
     }
-    fun updateAutorLibro(autorLibro: AutorLibro) {
+    fun updateAutorLibro(autorLibro: AuthorBook) {
         em.merge(autorLibro) //actualizar un registro sobre la BD
     }
     fun deleteAutorLibro(codigoAutorLibro: Long) {

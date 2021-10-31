@@ -1,10 +1,8 @@
 package eam.edu.co.prestamolibro.prestamolibro.servirces
 
-import eam.edu.co.prestamolibro.prestamolibro.Modelo.Autor
-import eam.edu.co.prestamolibro.prestamolibro.Modelo.Libro
+import eam.edu.co.prestamolibro.prestamolibro.Modelo.Author
 import eam.edu.co.prestamolibro.prestamolibro.exceptions.BusinessException
 import eam.edu.co.prestamolibro.prestamolibro.repositorio.AutorRepo
-import eam.edu.co.prestamolibro.prestamolibro.repositorio.LibroRepo
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import javax.persistence.EntityManager
@@ -16,7 +14,7 @@ class AutorService {
     lateinit var entityManager: EntityManager
 
 
-    fun createAutor(autor: Autor) {
+    fun createAutor(autor: Author) {
         val autorById = autorRepo.findAutor(autor.id)
 
         if(autorById != null){

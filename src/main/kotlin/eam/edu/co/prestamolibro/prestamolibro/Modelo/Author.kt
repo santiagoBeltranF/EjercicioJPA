@@ -7,13 +7,13 @@ import javax.persistence.Id
 import javax.persistence.Table
 
 @Entity
-@Table(name="Usuarios")
-data class Usuario(
+@Table(name="autor")
+data class Author(
     @Id
-    @Column(name="user_identification")
-    val identification:String,
-    @Column(name="nombre_usuario")
+    @Column(name="codigo_autor")
+    val id:Long,
+    @Column(name="nombre")
     var name:String,
-    @Column(name="apellido_usuario")
+    @Column(name="apellido")
     var lastname:String
 ):Serializable

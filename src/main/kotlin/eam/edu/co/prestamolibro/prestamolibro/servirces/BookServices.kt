@@ -1,11 +1,12 @@
 package eam.edu.co.prestamolibro.prestamolibro.servirces
 
-import eam.edu.co.prestamolibro.prestamolibro.Modelo.Libro
+import eam.edu.co.prestamolibro.prestamolibro.Modelo.Book
 import eam.edu.co.prestamolibro.prestamolibro.exceptions.BusinessException
 import eam.edu.co.prestamolibro.prestamolibro.repositorio.LibroRepo
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import javax.persistence.EntityManager
+import javax.persistence.EntityNotFoundException
 
 @Service
 class BookServices {
@@ -15,7 +16,7 @@ class BookServices {
     lateinit var entityManager: EntityManager
 
 
-    fun createBook(libro: Libro) {
+    fun createBook(libro: Book) {
         val productById = libroRepo.findLirbo(libro.code?:"")
 
         if(productById != null){
@@ -29,5 +30,9 @@ class BookServices {
         }
 
         libroRepo.createLibro(libro)
+    }
+    fun editLibro(libro: Book){
+        libroRepo.findLirbo(libro.code?:"") ?: throw EntityNotFoundException("This book does not exist")
+        libroRepo.updateLibro(libro)
     }
 }

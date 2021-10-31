@@ -1,6 +1,6 @@
 package eam.edu.co.prestamolibro.prestamolibro.repositories
 
-import eam.edu.co.prestamolibro.prestamolibro.Modelo.Editorial
+import eam.edu.co.prestamolibro.prestamolibro.Modelo.Publisher
 import eam.edu.co.prestamolibro.prestamolibro.repositorio.EditorialRepo
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
@@ -26,10 +26,10 @@ class repositorioEditorial {
         //que la persona no exista
 
         //la ejecucion de la prueba.. llamar el metodo que estoy probando
-        editorialRepo.createEditorial(Editorial("3", "nachito"))
+        editorialRepo.createEditorial(Publisher("3", "nachito"))
 
         //asersiones, o las verificaciones
-        val editorial = entityManager.find(Editorial::class.java, "3")
+        val editorial = entityManager.find(Publisher::class.java, "3")
         Assertions.assertNotNull(editorial)
         Assertions.assertEquals("3", editorial.code)
         Assertions.assertEquals("nachito", editorial.name)
@@ -40,19 +40,19 @@ class repositorioEditorial {
     @Test
     fun testDeleteEditorial(){
         //prerequisitos
-        entityManager.persist(Editorial("3", "nachito"))
+        entityManager.persist(Publisher("3", "nachito"))
 
         //ejecucion de la preuba
         editorialRepo.deleteEditorial("3")
 
         //assersiones
-        val editorial = entityManager.find(Editorial::class.java, "3")
+        val editorial = entityManager.find(Publisher::class.java, "3")
         Assertions.assertNull(editorial)
     }
 
     @Test
     fun findTestEditorial() {
-        entityManager.persist(Editorial("3", "nachito"))
+        entityManager.persist(Publisher("3", "nachito"))
 
         val editorial = editorialRepo.findEditorial("3")
 
@@ -63,10 +63,10 @@ class repositorioEditorial {
     @Test
     fun testUpdateEditorial() {
         //prerequisito
-        entityManager.persist(Editorial("3", "nachito",))
+        entityManager.persist(Publisher("3", "nachito",))
         entityManager.flush()
         //ejecutando...
-        val editorial = entityManager.find(Editorial::class.java, "3")
+        val editorial = entityManager.find(Publisher::class.java, "3")
 
         entityManager.clear()
         editorial.name = "nachote"
@@ -74,7 +74,7 @@ class repositorioEditorial {
         editorialRepo.updateEditorial(editorial)
 
         //assersiones
-        val personToAssert = entityManager.find(Editorial::class.java, "3")
+        val personToAssert = entityManager.find(Publisher::class.java, "3")
         Assertions.assertEquals("nachote", personToAssert.name)
 
     }

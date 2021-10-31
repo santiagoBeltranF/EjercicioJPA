@@ -5,7 +5,7 @@ import javax.persistence.*
 
 @Entity
 @Table(name="Editorial")
-data class Editorial(
+data class Publisher(
     @Id
     @Column(name="codigo_editorial")
     val code:String,
