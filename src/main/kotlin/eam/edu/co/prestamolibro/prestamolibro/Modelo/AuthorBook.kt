@@ -4,14 +4,14 @@ import javax.persistence.*
 
 @Entity
 @Table(name="Autorlibro")
-data class AutorLibro(
+data class AuthorBook(
     @Id
     @Column(name="codigo_autor_libro")
-    var code:Long,
+    val id:Long,
     @ManyToOne
     @JoinColumn(name =  "codigo_Autor" )
-    val  autor: Autor,
+    val  autor: Author,
     @ManyToOne
     @JoinColumn(name =  "codigo_Libro")
-    val  libro:Libro
+    val  book:Book
 )

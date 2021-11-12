@@ -8,12 +8,12 @@ import javax.persistence.Table
 
 @Entity
 @Table(name="Usuarios")
-data class Usuario(
+data class User(
     @Id
-    @Column(name="cedula")
+    @Column(name="user_identification")
     var identification:String,
-    @Column(name="nombre")
-    val name:String,
-    @Column(name="apellido")
-    val lastname:String
+    @Column(name="nombre_usuario")
+    var name:String,
+    @Column(name="apellido_usuario")
+    var lastname:String
 ):Serializable

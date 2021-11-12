@@ -5,11 +5,11 @@ import javax.persistence.*
 
 @Entity
 @Table(name="Editorial")
-data class Editorial(
+data class Publisher(
     @Id
     @Column(name="codigo_editorial")
-    var code:Long,
+    val code:String,
     @Column(name="nombre_editorial")
-    val name:String
+    var name:String
 
 ):Serializable
