@@ -33,6 +33,13 @@ tasks.withType<KotlinCompile> {
 	}
 }
 
+tasks.getByName<Jar>("jar") {
+	enabled = false
+	manifest {
+		attributes["Main-Class"] = "eam.edu.co.prestamolibro.PrestamolibroApplication"
+	}
+}
+
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
