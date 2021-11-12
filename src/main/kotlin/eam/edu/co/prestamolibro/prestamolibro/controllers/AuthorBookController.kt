@@ -1,6 +1,8 @@
 package eam.edu.co.prestamolibro.prestamolibro.controllers
 
 import eam.edu.co.prestamolibro.prestamolibro.Modelo.Author
+import eam.edu.co.prestamolibro.prestamolibro.Modelo.AuthorBook
+import eam.edu.co.prestamolibro.prestamolibro.servirces.AuthorBookServices
 import eam.edu.co.prestamolibro.prestamolibro.servirces.AutorService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.PostMapping
@@ -14,11 +16,11 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/authorbook")
 class AuthorBookController {
     @Autowired
-    lateinit var autorService: AutorService
+    lateinit var authorBookServices: AuthorBookServices
 
     @PostMapping //POST http://localhost:8081/persons
-    fun createBook(@RequestBody author: Author) {
-        autorService.createAutor(author)
+    fun createAthorBook(@RequestBody authorBook: AuthorBook) {
+        authorBookServices.createAutorBook(authorBook)
     }
 
 }
